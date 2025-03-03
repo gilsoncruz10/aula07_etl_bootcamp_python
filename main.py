@@ -1,6 +1,11 @@
-# 1) Ler o arquivo CSV e carregar os dados.
-# 2) Processar os dados em um dicionário, onde:
-#    a chave é a categoria, e
-#    o valor é uma lista de dicionários, 
-#    cada um contendo informações do produto (Produto, Quantidade, Venda).
-# 3) Calcular o total de vendas (Quantidade * Venda) por categoria.
+from etl import ler_csv, filtrar_produtos_entregues, somar_os_precos_da_lista
+
+path_arquivo = "vendas.csv"
+
+lista_de_produtos = ler_csv(path_arquivo)
+lista_entregues = filtrar_produtos_entregues(lista_de_produtos)
+valor_dos_produtos_entregues = somar_os_precos_da_lista(lista_entregues)
+
+print("lista de produtos vendidos: ", lista_de_produtos)
+print("lista de produtos entregues: ", lista_entregues)
+print("valor total dos produtos entregues: R$", valor_dos_produtos_entregues)

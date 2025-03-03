@@ -46,7 +46,16 @@ def filtrar_produtos_entregues(lista: list[dict]) -> list[dict]:
             lista_de_produtos_entregues.append(produto)
     return lista_de_produtos_entregues
 
-lista_de_produtos = ler_csv(path_arquivo)
-lista_entregues = filtrar_produtos_entregues(lista_de_produtos)
-print("lista de produtos vendidos: ", lista_de_produtos)
-print("lista de produtos entregues: ", lista_entregues)
+
+
+def somar_os_precos_da_lista(lista_de_produtos_entregues: list[dict]) -> int:
+    """
+    Funcao que soma os preços dos produtos da lista
+    """
+    soma_dos_precos = 0 #valor_total = 0
+    for produto in lista_de_produtos_entregues:
+        soma_dos_precos += int(produto.get("preco"))
+
+    return soma_dos_precos
+
+
